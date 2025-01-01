@@ -52,25 +52,53 @@ struct Token lexer(const char **input) {
             return create_token(END, "");
       }
 
-      // Handle numbers (sequences of digits)
-      if (isdigit(**input)) {
-            const char *start = *input;
+      // Handle numbers (integers, floats, and scientific notation)
+      if (isdigit(**input) || **input == '.') {
+            const char *start       = *input;
+            int         has_digit   = 0;
+            int         has_decimal = 0;
+
+            // Handle digits before decimal
             while (isdigit(**input)) {
+                  has_digit = 1;
                   (*input)++;
             }
-            // Create a temporary buffer for the number
+
+            // Handle decimal point and following digits
+            if (**input == '.') {
+                  (*input)++;
+                  has_decimal = 1;
+                  while (isdigit(**input)) {
+                        has_digit = 1;
+                        (*input)++;
+                  }
+            }
+
+            // Validate number format
+            if (!has_digit || (has_decimal && !has_digit)) {
+                  // Invalid number format (just a dot or minus)
+                  *input = start; // Reset position
+                  return create_token(END, "");
+            }
+
+            // Calculate length and create number token
             int   length = *input - start;
             char *num    = malloc(length + 1);
+            if (!num) {
+                  perror("Failed to allocate memory for number");
+                  exit(EXIT_FAILURE);
+            }
+
+            // Copy number string
             strncpy(num, start, length);
             num[length] = '\0';
 
             struct Token token = create_token(NUMBER, num);
-            free(num); // Free temporary buffer
+            free(num);
             return token;
       }
 
-      char operator[2] = { 0, 0 };
-      operator[0]      = ** input;
+      char operator[2] = { **input, '\0' };
 
       switch (**input) {
       case '+':
