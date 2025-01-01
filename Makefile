@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -I src/headers
 SRC_DIR = src
 OBJ_DIR = build
-TARGET = app
+TARGET = calc
 
 # Source and object files
 SRCS = $(wildcard $(SRC_DIR)/*.c)

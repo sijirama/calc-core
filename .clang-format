@@ -3,7 +3,7 @@ BasedOnStyle: LLVM
 IndentWidth: 6   
 TabWidth: 6     
 UseTab: Never      # Options: Never, ForIndentation, Always
-ColumnLimit: 80    # Maximum line width
+ColumnLimit: 100    # Maximum line width
 BraceWrapping:
   AfterClass: true        # Place braces on a new line after a class definition
   AfterControlStatement: false # Keep braces on the same line for if/else/while/for
