@@ -1,0 +1,27 @@
+# .clang-format
+BasedOnStyle: LLVM
+IndentWidth: 6   
+TabWidth: 6     
+UseTab: Never      # Options: Never, ForIndentation, Always
+ColumnLimit: 80    # Maximum line width
+BraceWrapping:
+  AfterClass: true        # Place braces on a new line after a class definition
+  AfterControlStatement: false # Keep braces on the same line for if/else/while/for
+  AfterFunction: false    # Keep braces on the same line after function definitions
+  AfterNamespace: true    # Place braces on a new line after namespaces
+  BeforeCatch: true       # Place braces on a new line before catch
+  SplitEmptyFunction: false # Don't split empty functions into multiple lines
+AlignConsecutiveAssignments: true # Align variable assignments
+AlignConsecutiveDeclarations: true # Align declarations
+AlignTrailingComments: true       # Align comments after code
+BreakBeforeBinaryOperators: None  # Place binary operators with the next line
+BreakBeforeBraces: Attach         # Options: Attach, Linux, Allman, Stroustrup
+IncludeCategories:
+  - Regex: '^<.*\.h>'      # Standard library headers
+    Priority: 1
+  - Regex: '^".*"'         # User headers
+    Priority: 2
+SortIncludes: true         # Automatically sort includes
+ReflowComments: true       # Reformat comments to fit within ColumnLimit
+SpacesInParentheses: false # No spaces inside parentheses
+SpaceBeforeParens: ControlStatements # Add a space before parentheses in control statements
