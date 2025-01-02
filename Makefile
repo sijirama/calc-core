@@ -6,6 +6,7 @@ SRC_DIR = src
 TEST_DIR = $(SRC_DIR)/tests
 OBJ_DIR = build
 TARGET = calc
+LDFLAGS = -lm
 
 TEST_TARGET = test_calc
 TEST_SRCS = $(wildcard $(TEST_DIR)/*.c)
@@ -21,19 +22,19 @@ all: $(TARGET)
 # Create the target executable
 $(TARGET): $(OBJS) $(OBJ_DIR)/main.o
 	@echo "Linking executable $(TARGET)..."
-	@$(CC) $(CFLAGS) -o $@ $^
+	@$(CC) $(CFLAGS) -o  $@ $^ $(LDFLAGS)
 
 # Compile source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling $<..."
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS)  $(LDFLAGS) -c $< -o $@
 
 # Compile test source files to object files
 $(OBJ_DIR)/%.o: $(TEST_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling test file $<..."
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS)  $(LDFLAGS) -c $< -o $@
 
 # Link and create the test executable
 $(TEST_TARGET): $(OBJS) $(TEST_OBJS)
