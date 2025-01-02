@@ -135,4 +135,38 @@ UTEST(Lexer, LongExpression) {
       free_tokens(tokens, num_tokens);
 }
 
+// Test: Nested parentheses
+UTEST(Lexer, NestedParentheses) {
+      char         *expression = "((1 + 2) * (3 / 4))";
+      int           num_tokens;
+      struct Token *tokens = tokenize(expression, &num_tokens);
+
+      ASSERT_EQ((int)tokens[0].type, LPAREN);
+      ASSERT_EQ((int)tokens[1].type, LPAREN);
+      ASSERT_EQ((int)tokens[2].type, NUMBER);
+      ASSERT_STREQ(tokens[2].value, "1");
+
+      ASSERT_EQ((int)tokens[3].type, PLUS);
+      ASSERT_EQ((int)tokens[4].type, NUMBER);
+      ASSERT_STREQ(tokens[4].value, "2");
+
+      ASSERT_EQ((int)tokens[5].type, RPAREN);
+      ASSERT_EQ((int)tokens[6].type, MUL);
+      ASSERT_EQ((int)tokens[7].type, LPAREN);
+
+      ASSERT_EQ((int)tokens[8].type, NUMBER);
+      ASSERT_STREQ(tokens[8].value, "3");
+
+      ASSERT_EQ((int)tokens[9].type, DIV);
+      ASSERT_EQ((int)tokens[10].type, NUMBER);
+      ASSERT_STREQ(tokens[10].value, "4");
+
+      ASSERT_EQ((int)tokens[11].type, RPAREN);
+      ASSERT_EQ((int)tokens[12].type, RPAREN);
+
+      ASSERT_EQ((int)tokens[13].type, END);
+
+      free_tokens(tokens, num_tokens);
+}
+
 UTEST_MAIN();
