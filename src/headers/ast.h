@@ -45,6 +45,9 @@ ASTNode *create_binary_node(char op, ASTNode *left, ASTNode *right);
 ASTNode *create_unary_node(char op, ASTNode *operand);
 ASTNode *create_grouping_node(ASTNode *expression);
 
+// function to display/print the AST
+void print_ast(ASTNode *node);
+
 // Function prototype for freeing the AST
 void free_ast(ASTNode *node);
 

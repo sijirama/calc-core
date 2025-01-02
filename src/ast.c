@@ -1,4 +1,5 @@
 #include "headers/ast.h"
+#include <stdio.h>
 
 // Create a number node
 ASTNode *create_number_node(double value) {
@@ -56,4 +57,42 @@ void free_ast(ASTNode *node) {
       }
 
       free(node);
+}
+
+void print_ast(ASTNode *node) {
+      if (!node)
+            return; // If the node is NULL, do nothing
+
+      switch (node->type) {
+      case AST_NUMBER:
+            printf("%f", node->number.value); // Print the number value
+            break;
+
+      case AST_BINARY_OP:
+            // Print left operand, operator, and right operand in infix form
+            printf("(");
+            print_ast(node->binary.left);
+            printf(" %c ", node->binary.op); // Print the operator
+            print_ast(node->binary.right);
+            printf(")");
+            break;
+
+      case AST_UNARY_OP:
+            // Print the operator and operand for unary operations
+            printf("(%c", node->unary.op);
+            print_ast(node->unary.operand);
+            printf(")");
+            break;
+
+      case AST_GROUPING:
+            // Print the grouped expression inside parentheses
+            printf("(");
+            print_ast(node->grouping.expression);
+            printf(")");
+            break;
+
+      default:
+            printf("Unknown node type");
+            break;
+      }
 }

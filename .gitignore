@@ -1,4 +1,4 @@
 build
 app
 calc
-./test_calc
+test_calc

@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "headers/ast.h"
+#include "headers/parser.h"
 #include "headers/token.h"
 
 int main(int argc, char *argv[]) {
@@ -18,10 +20,16 @@ int main(int argc, char *argv[]) {
 
       struct Token *tokens = tokenize(expression, &num_tokens);
 
+      ASTNode *ast = parse_program(tokens, num_tokens);
+      print_ast(ast);
+
+      printf("\n\n");
+
       for (int i = 0; i < num_tokens; i++) {
             printf("Token: %s (type: %d)\n", tokens[i].value, tokens[i].type);
       }
 
+      free_ast(ast);
       free_tokens(tokens, num_tokens);
       free(expression);
 
