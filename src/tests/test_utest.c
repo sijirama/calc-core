@@ -1,3 +1,3 @@
 #include "utest.h"
 
-UTEST(foo, bar) { ASSERT_TRUE(1); }
+UTEST(Testing, Utest) { ASSERT_TRUE(1); }
