@@ -39,7 +39,8 @@ $(OBJ_DIR)/%.o: $(TEST_DIR)/%.c
 # Link and create the test executable
 $(TEST_TARGET): $(OBJS) $(TEST_OBJS)
 	@echo "Linking test executable $(TEST_TARGET)..."
-	@$(CC) $(CFLAGS) -o $@ $^
+	@$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
 
 # Test target
 test: $(TEST_TARGET)
