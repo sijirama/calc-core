@@ -13,6 +13,7 @@ UTEST(Parser, ParserPrecedenceLevel) {
       ASSERT_EQ(get_precedence_level(tokens[1].type), 1);
       ASSERT_EQ(get_precedence_level(tokens[2].type), 2);
       ASSERT_EQ(get_precedence_level(tokens[3].type), 2);
+      ASSERT_EQ(get_precedence_level(tokens[4].type), 3);
       ASSERT_EQ(get_precedence_level(tokens[num_tokens - 1].type), 0);
 
       free_tokens(tokens, num_tokens);
