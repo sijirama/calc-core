@@ -218,7 +218,7 @@ UTEST(Evaluator, FloatingPointDivision) {
 
       ASSERT_TRUE(ast != NULL);
       ASTNode *result = evaluate(ast);
-      ASSERT_EQ(result->number.value, 2.33); // 7 / 3 = 2.333333...
+      ASSERT_EQ(result->number.value, 2.333333); // 7 / 3 = 2.333333...
 
       free_ast(ast);
       // free_ast(result);

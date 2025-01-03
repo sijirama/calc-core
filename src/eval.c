@@ -23,7 +23,7 @@ ASTNode *evaluate(ASTNode *node) {
             ASTNode *operand = evaluate(node->unary.operand);
             if (operand->type == AST_NUMBER) {
                   double result = (node->unary.op == '-') ? -operand->number.value : operand->number.value;
-                  free_ast(node);                    // Clean up old nodes
+                  // free_ast(node);                    // Clean up old nodes
                   return create_number_node(result); // Return simplified node
             }
             node->unary.operand = operand; // Keep subtree for further evaluation
@@ -56,7 +56,7 @@ ASTNode *evaluate(ASTNode *node) {
                         fprintf(stderr, "Error: Unknown operator '%c'\n", node->binary.op);
                         exit(EXIT_FAILURE);
                   }
-                  free_ast(node);                    // Clean up old nodes
+                  // free_ast(node);                    // Clean up old nodes
                   return create_number_node(result); // Return simplified node
             }
 
