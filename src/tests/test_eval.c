@@ -210,7 +210,38 @@ UTEST(Evaluator, EmptyInput) {
 }
 
 // Test: Floating-point division
-UTEST(Evaluator, FloatingPointDivision) {
+/*UTEST(Evaluator, FloatingPointDivision) {*/
+/*      char         *expression = "7 / 3";*/
+/*      int           num_tokens;*/
+/*      struct Token *tokens = tokenize(expression, &num_tokens);*/
+/*      ASTNode      *ast    = parse_program(tokens, num_tokens);*/
+/**/
+/*      ASSERT_TRUE(ast != NULL);*/
+/*      ASTNode *result = evaluate(ast);*/
+/*      ASSERT_EQ(result->number.value, 2.333333); // 7 / 3 = 2.333333...*/
+/**/
+/*      free_ast(ast);*/
+/*      // free_ast(result);*/
+/*      free_tokens(tokens, num_tokens);*/
+/*}*/
+
+/*
+The failure happens because floating-point numbers are inherently imprecise in computing. Even though 2.333333 looks identical to
+what you're comparing, it might have tiny differences due to the way floating-point arithmetic works.
+
+To fix this, you should compare floating-point numbers within a small tolerance (epsilon), rather than checking for exact
+equality. Here's how you can modify the test:
+
+Why It Works
+
+- fabs (absolute value) ensures we are looking at the magnitude of the difference.
+- The epsilon value (1e-6) determines the precision tolerance. If the difference between the actual result and expected value is
+less than this, they are considered equal.
+
+This should resolve the test failure. Let me know how it goes!
+*/
+
+UTEST(Evaluator, FloatingPointDivision2) {
       char         *expression = "7 / 3";
       int           num_tokens;
       struct Token *tokens = tokenize(expression, &num_tokens);
@@ -218,9 +249,12 @@ UTEST(Evaluator, FloatingPointDivision) {
 
       ASSERT_TRUE(ast != NULL);
       ASTNode *result = evaluate(ast);
-      ASSERT_EQ(result->number.value, 2.333333); // 7 / 3 = 2.333333...
+
+      double expected = 7.0 / 3.0;
+      double epsilon  = 1e-6; // Tolerance for floating-point comparison
+
+      ASSERT_TRUE(fabs(result->number.value - expected) < epsilon); // Compare within tolerance
 
       free_ast(ast);
-      // free_ast(result);
       free_tokens(tokens, num_tokens);
 }
