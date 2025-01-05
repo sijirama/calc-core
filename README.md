@@ -1,7 +1,4 @@
 
-
----
-
 # **Calc-Core: The Ultimate C Expression Interpreter**
 
 Welcome to **Calc-Core**! The fastest, most lightweight calculator expression interpreter ever, written in pure **C**! No dependencies required—just make and C with the GCC compiler. Whether you're a programming newbie or a seasoned coder, **Calc-Core** will make evaluating mathematical expressions a breeze!
@@ -88,30 +85,3 @@ make
 ```
 
 This will produce the `calc` binary, which you can use to evaluate any expression you'd like.
-
----
-
-## 🤝 **Contributing**
-
-We welcome contributions! If you have any ideas for improvements or bug fixes, feel free to fork the project and submit a pull request. 
-
----
-
-## 📄 **License**
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
-
-## 🌟 **About Calc-Core**
-
-Whether you’re just learning to code, building tools for fun, or need a fast calculator for daily tasks, **Calc-Core** is here to take your math skills to the next level! Build it once, use it everywhere. 
-
----
-
-Enjoy computing like never before with **Calc-Core**. Make sure to share your awesome results with the world!
-
----
-
-Let me know if you need any modifications or additional sections!
-
