@@ -15,7 +15,6 @@ int main(int argc, char *argv[]) {
 
       // get the expression to loop
       char *expression = join_arguments(argc, argv);
-      printf("Parsing Expression: %s\n", expression);
 
       int num_tokens;
 
