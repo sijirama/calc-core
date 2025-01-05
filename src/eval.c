@@ -42,6 +42,9 @@ ASTNode *evaluate(ASTNode *node) {
                   case '-':
                         result = left->number.value - right->number.value;
                         break;
+                  case '^':
+                        result = pow(left->number.value, right->number.value);
+                        break;
                   case '*':
                         result = left->number.value * right->number.value;
                         break;

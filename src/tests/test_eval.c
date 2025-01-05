@@ -36,6 +36,21 @@ UTEST(Evaluator, SimpleAddition) {
       free_tokens(tokens, num_tokens);
 }
 
+/*UTEST(Evaluator, SimplePower) {*/
+/*      char         *expression = "2 ^ 2";*/
+/*      int           num_tokens;*/
+/*      struct Token *tokens = tokenize(expression, &num_tokens);*/
+/*      ASTNode      *ast    = parse_program(tokens, num_tokens);*/
+/**/
+/*      ASSERT_TRUE(ast != NULL);*/
+/*      ASTNode *result = evaluate(ast);*/
+/*      ASSERT_EQ(result->number.value, 4.0);*/
+/**/
+/*      free_ast(ast);*/
+/*      // free_ast(result);*/
+/*      free_tokens(tokens, num_tokens);*/
+/*}*/
+
 // Test: Simple subtraction
 UTEST(Evaluator, SimpleSubtraction) {
       char         *expression = "5 - 3";

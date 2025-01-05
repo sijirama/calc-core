@@ -9,6 +9,7 @@ enum TokenType {
       LPAREN,
       RPAREN,
       END, // To mark the end of the input
+      POWER,
 };
 
 struct Token {

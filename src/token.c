@@ -110,6 +110,9 @@ struct Token lexer(const char **input) {
       case '*':
             (*input)++;
             return create_token(MUL, operator);
+      case '^':
+            (*input)++;
+            return create_token(POWER, operator);
       case '/':
             (*input)++;
             return create_token(DIV, operator);

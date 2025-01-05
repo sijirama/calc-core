@@ -72,6 +72,7 @@ int get_precedence_level(enum TokenType token) {
       case DIV:
             return 2;
       case LPAREN:
+      case POWER:
             return 3;
       default:
             return 0;
@@ -90,6 +91,8 @@ char get_operator_char(enum TokenType type) {
             return '*';
       case DIV:
             return '/';
+      case POWER:
+            return '^';
       default:
             return '\0';
       }
